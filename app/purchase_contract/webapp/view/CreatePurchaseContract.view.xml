@@ -1,0 +1,652 @@
+<mvc:View
+    controllerName="com.ingenx.purchasecontract.controller.CreatePurchaseContract"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:table="sap.ui.table"
+    busyIndicatorDelay="0"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.f"
+    xmlns:tnt="sap.tnt"
+    height="520px"
+>
+    <OverflowToolbar id="pa_IDGenOverflowToolbar9">
+        <Title
+            id="pageHeader"
+            text="Create Contract"
+            textAlign="Center"
+        />
+    </OverflowToolbar>
+    <VBox class="sapUiSmallMarginBottom sapUiSmallMarginEnd">
+        <HBox
+            id="pa_IDGenHBox1"
+            class="sapUiTinyMarginTop"
+        >
+            <Label
+                id="pa_IDGenL"
+                class="docTypeLabel"
+                text="Document Type:"
+                
+            />
+            <HBox class="sapUiSmallMarginEnd">
+                <Select
+                    width="250px"
+                    class="sapUiSmallMarginBottom"
+                    items="{documentTypes>/}"
+                    forceSelection="false"
+                    selectedKey="{sales>/SalesContractType}"
+                    id="selectedDocumentType"
+                    change="docTypeSelection"
+                >
+                    <core:Item
+                        key="{documentTypes>}"
+                        text="{documentTypes>}"
+                    />
+                </Select>
+            </HBox>
+        </HBox>
+    </VBox>
+    <f:DynamicPage
+        id="dynamicPageId"
+        stickySubheaderProvider="iconTabBarDynamic"
+        class="sapUiNoContentPadding"
+        showFooter="true"
+        preserveHeaderStateOnScroll="true"
+        fitContent="true"
+        visible="false"
+    >
+        <f:content>
+            <IconTabBar
+                id="iconTabBarHeader"
+                class="sapUiResponsiveContentPadding"
+                select="onSelectoptions"
+            >
+                <items>
+                    <IconTabFilter
+                        id="pa_IDGenIconTabFilter1"
+                        text="Org Details"
+                        key="headerDetails"
+                        icon="sap-icon://header"
+                        class="orgDetailsPage"
+                    >
+                        <form:SimpleForm
+                            id="pa_IDGenSimpleForm1"
+                            class="tableBorder sapUiTinyMargin"
+                            editable="true"
+                        >
+                            <form:toolbar>
+                                <Toolbar id="TB1">
+                                    <Title
+                                        id="Title1"
+                                        text="Org Details"
+                                    />
+                                    <ToolbarSpacer id="pa_IDGenToolbarSpacer4" />
+                                    <Button
+                                        id="capDetailsBtn"
+                                        text="NEXT" type="Emphasized"
+                                        width="100px"
+                                        press="onNext"
+                                    />
+                                </Toolbar>
+                            </form:toolbar>
+                            <form:content>
+                                <core:Title id="pa_IDGenTitle1" />
+                                <Label
+                                    id="pa_IDGenLabel2"
+                                    text="Vendor"
+                                    
+                                    required="true"
+                                />
+                                <HBox>
+                                    <Input
+                                        id="Vendorpa_id"
+                                        width="200px"
+                                        showValueHelp="true"
+                                        valueHelpRequest="onVendor"
+                                        valueHelpOnly="true"
+                                        value="{purchase>/Vendor}"
+                                    />
+                                    <Input
+                                        id="vendorDesc"
+                                        width="200px"
+                                        editable="false"
+                                        visible="false"
+                                        class="materialDesc"
+                                    />
+                                </HBox>
+                                <Label
+                                    id="_IDGenLabel4"
+                                    text="Company Code"
+                                    
+                                />
+                                <HBox>
+                                    <Input
+                                        id="companyCode_id"
+                                        width="200px"
+                                        editable="false"
+                                        value="{purchase>/CompCode}"
+                                    />
+                                    <Input
+                                        id="companyDesc"
+                                        width="200px"
+                                        editable="false"
+                                        visible="false"
+                                        class="materialDesc"
+                                    />
+                                </HBox>
+                                <Label
+                                    id="_IDGenLabel5"
+                                    text="Purchase Organisation"
+                                    
+                                />
+                                <HBox>
+                                    <Input
+                                        id="purchaseOrg_id"
+                                        width="200px"
+                                        editable="false"
+                                        value="{purchase>/PurchOrg}"
+                                    />
+                                    <Input
+                                        id="purchOrgDesc"
+                                        width="200px"
+                                        editable="false"
+                                        visible="false"
+                                        class="materialDesc"
+                                    />
+                                </HBox>
+                                <core:Title id="_IDGenTitle2" />
+                                <Label
+                                    id="_IDGenLabel3"
+                                    text="Purchase Group"
+                                    
+                                    required="true"
+                                />
+                                <HBox>
+                                    <Input
+                                        id="purchase_id"
+                                        width="200px"
+                                        showValueHelp="true"
+                                        valueHelpRequest="onPurchaseGrp"
+                                        value="{purchase>/PurGroup}"
+                                        valueHelpOnly="true"
+                                    />
+                                    <Input
+                                        id="purchGrpDesc"
+                                        width="200px"
+                                        editable="false"
+                                        visible="false"
+                                        class="materialDesc"
+                                    />
+                                </HBox>
+                                <Label
+                                    id="_IDGenLabel7"
+                                    text="Start Date"
+                                    
+                                />
+                                <DatePicker
+                                    id="DP1"
+                                    placeholder="‎"
+                                    change="onSelectDate"
+                                    width="200px"
+                                    required="true"
+                                    ariaLabelledBy=""
+                                />
+                                <Label
+                                    id="_IDGenLabel8"
+                                    text="End Date"
+                                    
+                                />
+                                <DatePicker
+                                    id="DP2"
+                                    placeholder="‎"
+                                    change="onSelectDate"
+                                    width="200px"
+                                    required="true"
+                                />
+                            </form:content>
+                        </form:SimpleForm>
+                    </IconTabFilter>
+                    <IconTabFilter
+                        id="_IDGenIconTabFilter2"
+                        key="itemDetails"
+                        text="Capacity Details"
+                        icon="sap-icon://activity-items"
+                        enabled="false"
+                    >
+                        <form:SimpleForm
+                            id="_IDGenSimpleForm2"
+                            class="tableBorder sapUiTinyMargin"
+                            editable="true"
+                        >
+                            <form:toolbar>
+                                <Toolbar id="TB2">
+                                    <Title
+                                        id="Title2"
+                                        text="Capacity Details"
+                                    />
+                                    <ToolbarSpacer id="_IDGen" />
+                                    <Button
+                                        id="servCatalogBtn"
+                                        text="NEXT" type="Emphasized"
+                                        visible="true"
+                                        press="onProceedServCat"
+                                        width="100px"
+                                        ariaHasPopup="Dialog"
+                                    />
+                                </Toolbar>
+                            </form:toolbar>
+                            <form:content>
+                                <core:Title id="_IDGenTitle5" />
+                                <Label
+                                    id="_IDGenLabel9"
+                                    text="Material"
+                                    required="true"
+                                    
+                                />
+                                <HBox id="materialBox">
+                                    <Input
+                                        id="material_id"
+                                        width="200px"
+                                        showValueHelp="true"
+                                        valueHelpRequest="onMaterial"
+                                        value="{purchase>/to_Items/0/Material}"
+                                        valueHelpOnly="true"
+                                    />
+                                    <Input
+                                        id="materialDesc"
+                                        width="200px"
+                                        editable="false"
+                                        visible="false"
+                                        class="materialDesc"
+                                    />
+                                </HBox>
+                                <Label
+                                    id="_IDGenLabel13"
+                                    text="Target Quantity"
+                                    
+                                    required="true"
+                                />
+                                <Input
+                                    id="targetQuantity"
+                                    width="200px"
+                                    change="targetQuantityCal"
+                                    value="{purchase>/to_Items/0/TargetQty}"
+                                />
+                                <Label
+                                    id="_IDGenLabel12"
+                                    text="DCQ"
+                                    
+                                />
+                                <Input
+                                    id="DCQ_Input"
+                                    width="200px"
+                                    required="true"
+                                    editable="false"
+                                    change="deriveNetDCQ"
+                                />
+                                <Label
+                                    id="_IDGenLabel10"
+                                    text="UOM"
+                                    
+                                />
+                                <Input
+                                    id="Uom_id"
+                                    width="200px"
+                                    showValueHelp="true"
+                                    valueHelpRequest="onUom"
+                                    value="{purchase>/to_Items/0/PoUnit}"
+                                    required="true"
+                                    valueHelpOnly="true"
+                                />
+                                <core:Title id="_IDGenTitle4" />
+                                <Label
+                                    id="_IDGenLabel11"
+                                    text="Plant"
+                                    
+                                    required="true"
+                                />
+                                <HBox id="_IDGenHBox2">
+                                    <Input
+                                        id="plant_id"
+                                        width="200px"
+                                        showValueHelp="true"
+                                        valueHelpRequest="onPlant"
+                                        value="{purchase>/to_Items/0/Plant}"
+                                        required="true"
+                                        valueHelpOnly="true"
+                                    />
+                                    <Input
+                                        id="plantDesc"
+                                        width="200px"
+                                        editable="false"
+                                        visible="false"
+                                        class="plantDesc"
+                                    />
+                                </HBox>
+                                <Label
+                                    id="_IDGenLabl10"
+                                    text="Storage Location"
+                                    
+                                />
+                                <Input
+                                    id="storage_id"
+                                    width="200px"
+                                    showValueHelp="true"
+                                    valueHelpRequest="onStorage"
+                                    value="{purchase>/to_Items/0/StgeLoc}"
+                                    required="true"
+                                    valueHelpOnly="true"
+                                />
+                                <Label
+                                    id="_IDGenLbel16"
+                                    text="Service Profile"
+                                    class="servProLabel"
+                                    required="true"
+                                    
+                                />
+                            <HBox class="sapUiSmallMarginEnd">
+                                <Select
+                                    width="200px"
+                                    change="onSelectProfile"
+                                    items="{purchaseModel>/ServiceProfileNames}"
+                                    id="selectedProfileType"
+                                    forceSelection="false"
+                                    selectedKey="{sales>/PurchaseOrderByCustomer}"
+                                >
+                                    <core:Item key="{purchaseModel>profileKey}" text="{purchaseModel>profileText}" />
+                                </Select>
+                                <Input id="servProDesc" class="materialDesc" visible="false" editable="false" width="200px" />
+                            </HBox>
+                                <Label
+                                    text="Fuel"
+                                    labelFor="Fuel"
+                                    id="fuelRadioLabel"
+                                    visible="false"
+                                    
+                                />
+                                <RadioButtonGroup
+                                    id="fuelRadio"
+                                    visible="false"
+                                    select="onRadioButtonSelect"
+                                    columns="2"
+                                >
+                                    <buttons>
+                                        <RadioButton
+                                            id="_IDGenRadioButton1"
+                                            text="Yes"
+                                        />
+                                        <RadioButton
+                                            id="_IDGenRadioButton2"
+                                            text="No"
+                                            selected="true"
+                                        />
+                                    </buttons>
+                                </RadioButtonGroup>
+                            </form:content>
+                        </form:SimpleForm>
+                        <form:SimpleForm
+                            id="deliveryTableForm"
+                            class="tableBorder sapUiTinyMargin"
+                        >
+                            <Table
+                                id="locationtable"
+                                mode="None"
+                            >
+                                <columns>
+                                    <Column id="_IDGenColumn2">
+                                        <header>
+                                            <Label
+                                                id="Delivery"
+                                                wrapping="true"
+                                                
+                                                text="Delivery Point"
+                                                required="true"
+                                            />
+                                        </header>
+                                    </Column>
+                                </columns>
+                                <items>
+                                    <ColumnListItem
+                                        type="Active"
+                                        press="onSelectServiceProfile"
+                                        id="item0"
+                                    >
+                                        <cells>
+                                            <Input
+                                                id="delivery_id"
+                                                width="200px"
+                                                showValueHelp="true"
+                                                valueHelpRequest="onDelivery"
+                                                class="margin"
+                                                valueHelpOnly="true"
+                                            />
+                                        </cells>
+                                    </ColumnListItem>
+                                </items>
+                            </Table>
+                        </form:SimpleForm>
+                    </IconTabFilter>
+                    <IconTabFilter
+                        id="_IDGenIconTabFilter3"
+                        text="Service Catalogue"
+                        icon="sap-icon://crm-service-manager"
+                        key="servDetails"
+                        class="iconText"
+                        enabled="false"
+                    >
+                        <Table
+                            items="{contractDataModel>/}"
+                            mode="None"
+                            class="tableBorder sapUiTinyMargin"
+                            visible="false"
+                        >
+                            <columns>
+                                <Column width="7rem">
+                                    <header>
+                                        <Title
+                                            id="title2"
+                                            text="Service Parameter"
+                                        />
+                                    </header>
+                                </Column>
+                            </columns>
+                            <items>
+                                <ColumnListItem>
+                                    <cells>
+                                        <Text text="{contractDataModel>serviceParameter}" />
+                                        <Text
+                                            text="{contractDataModel>ID}"
+                                            visible="false"
+                                        />
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+                        <Table
+                            items="{valueParameterModel>/}"
+                            mode="None"
+                            id="valueParameterTable"
+                            class="tableBorder sapUiTinyMargin"
+                        >
+                            <columns>
+                                <Column width="10rem">
+                                    <header>
+                                        <Label
+                                            id="title4"
+                                            text="Value Parameter"
+                                        />
+                                    </header>
+                                </Column>
+                                <Column width="10rem">
+                                    <header>
+                                        <Label
+                                            id="title5"
+                                            text="Value"
+                                        />
+                                    </header>
+                                </Column>
+                                <Column width="40rem">
+                                    <header>
+                                        <Title id="title6" />
+                                    </header>
+                                </Column>
+                            </columns>
+                            <items>
+                                <ColumnListItem>
+                                    <cells>
+                                        <Text text="{valueParameterModel>serviceParameter}" />
+                                        <Input
+                                            width="100px"
+                                            value="{valueParameterModel>value}"
+                                            change="tarQuantCalCatlog"
+                                            required="true"
+                                        />
+                                        <Label
+                                            id="uomUnitDerived"
+                                            text=""
+                                            
+                                        />
+                                        <Text
+                                            text="{valueParameterModel>ID}"
+                                            visible="false"
+                                        />
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+                        <VBox id="_IDGenVBox6">
+                            <Button
+                                text="Add Clause Code"
+                                press="onCreatePress"
+                                class="sapUiTinyMargin"
+                                type="Emphasized"
+                            />
+                            <Table
+                                items="{threshDataModel>/}"
+                                id="clCodeTable"
+                                class="tableBorder sapUiTinyMargin"
+                            >
+                                <columns>
+                                    <Column>
+                                        <Text text="Clause Code" />
+                                    </Column>
+                                    <Column>
+                                        <Text text="Valid From" />
+                                    </Column>
+                                    <Column>
+                                        <Text text="Valid To" />
+                                    </Column>
+                                    <Column>
+                                        <Text text="Threshold%" />
+                                    </Column>
+                                    <Column>
+                                        <Text text="Threshold Reference" />
+                                    </Column>
+                                    <Column>
+                                        <Text text="Remark" />
+                                    </Column>
+                                    <Column>
+                                        <Text text="Action" />
+                                    </Column>
+                                </columns>
+                                <items>
+                                    <ColumnListItem>
+                                        <cells>
+                                            <Select
+                                                width="150px"
+                                                items="{threshHoldData>/}"
+                                                selectedKey="{threshDataModel>clCode}"
+                                                forceSelection="false"
+                                            >
+                                                <core:Item
+                                                    key="{threshHoldData>}"
+                                                    text="{threshHoldData>}"
+                                                />
+                                            </Select>
+                                            <DatePicker
+                                                id="clauseCodeValidFrom"
+                                                width="150px"
+                                                value="{threshDataModel>validFrom}"
+                                                change="onSelectClauseCValidFrom"
+                                                required="true"
+                                            />
+                                            <DatePicker
+                                                id="clauseCodeValidTo"
+                                                width="150px"
+                                                value="{threshDataModel>validTo}"
+                                                change="onSelectClauseCValidTo"
+                                                required="true"
+                                            />
+                                            <Input
+                                                width="100px"
+                                                value="{threshDataModel>threshold}"
+                                            />
+                                            <Select
+                                                width="150px"
+                                                items="{relevenceData>/}"
+                                                selectedKey="{threshDataModel>threshRef}"
+                                                forceSelection="false"
+                                            >
+                                                <core:Item
+                                                    key="{relevenceData>}"
+                                                    text="{relevenceData>}"
+                                                />
+                                            </Select>
+                                            <Input
+                                                width="100px"
+                                                value="{threshDataModel>remark}"
+                                                required="true"
+                                            />
+                                            <Button id="actionBtn" icon="sap-icon://delete" press="onDeletePress" />
+                                        </cells>
+                                    </ColumnListItem>
+                                </items>
+                            </Table>
+                            <Table
+                                id="allocTable"
+                                items="{allocModel>/allocLevel}"
+                            >
+                                <headerToolbar>
+                                    <Toolbar>
+                                        <Title text="Allocation Parameters" />
+                                    </Toolbar>
+                                </headerToolbar>
+                                <columns>
+                                    <Column>
+                                        <Text text="Level" />
+                                    </Column>
+                                    <Column>
+                                        <Text text="Parameters" />
+                                    </Column>
+                                </columns>
+                                <items>
+                                    <ColumnListItem>
+                                        <cells>
+                                            <Text text="{allocModel>Level}" />
+                                            <Select
+                                                selectedKey="{allocModel>selectedParam}"
+                                                width="200px"
+                                                forceSelection="false"
+                                            >
+                                                <!-- DYNAMIC ITEMS -->
+                                            </Select>
+                                        </cells>
+                                    </ColumnListItem>
+                                </items>
+                            </Table>
+                            <Button
+                                id="_IDGenButton"
+                                text="Submit"
+                                width="100px"
+                                class="sapUiSmallMargin"
+                                type="Emphasized"
+                                press="submitPurchaseAgreement"
+                            />
+                        </VBox>
+                    </IconTabFilter>
+                </items>
+            </IconTabBar>
+        </f:content>
+    </f:DynamicPage>
+</mvc:View>

@@ -1,0 +1,1 @@
+using purchasecontract as service from '../../srv/purchaseContractService';

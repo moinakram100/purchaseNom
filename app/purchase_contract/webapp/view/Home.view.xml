@@ -1,0 +1,65 @@
+<mvc:View
+    controllerName="com.ingenx.purchasecontract.controller.Home"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+>
+    <OverflowToolbar
+        id="_IDGenOverflowToolbar9"
+        height="50px"
+    >
+        <Title
+            id="pageHeader"
+            text="Purchase Agreement Panel"
+            textAlign="Center"
+        />
+    </OverflowToolbar>
+    <Page
+        id="page"
+        showHeader="false"
+    >
+        <content>
+            <GenericTile
+                id="_IDGenGenericTile1"
+                class="sapUiSmallMarginBegin sapUiSmallMarginTop tileLayout"
+                header="Create Gas Purchase Agreement"
+                press="onCreatePA"
+            >
+                <TileContent id="_IDGenTileContent1">
+                    <ImageContent
+                        id="_IDGenImageContent1"
+                        src="sap-icon://decision"
+                    />
+                </TileContent>
+            </GenericTile>
+
+            <GenericTile
+                id="_IDGenGenericTile2"
+                class="sapUiSmallMarginBegin sapUiSmallMarginTop tileLayout"
+                header="Amend Gas Purchase Agreement"
+                press="onAmendPA"
+            >
+                <TileContent id="_IDGenTileContent2">
+                    <ImageContent
+                        id="_IDGenImageContent2"
+                        src="sap-icon://edit"
+                    />
+                </TileContent>
+            </GenericTile>
+
+            <GenericTile
+                id="_IDGenGenericTile3"
+                class="sapUiSmallMarginBegin sapUiSmallMarginTop tileLayout"
+                header="Display Gas Purchase Agreement"
+                press="onDisplayPA"
+            >
+                <TileContent id="_IDGenTileConten3">
+                    <ImageContent
+                        id="_IDGenImageContent3"
+                        src="sap-icon://manager-insight"
+                    />
+                </TileContent>
+            </GenericTile>
+        </content>
+    </Page>
+</mvc:View>
