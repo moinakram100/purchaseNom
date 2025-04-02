@@ -1,0 +1,18 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+    <SelectDialog
+        id="Storageloc1"
+        noDataText="{=${PurchaseLocationModel>/}.length>0 ? 'Loading...' : 'Storage Location not found'}"
+        title="Select Storage Location"
+        liveChange="onValueHelpStorageSearch"
+        confirm="onConfirmAmendStorage"
+         items="{PurchaseLocationModel>/}">
+        <StandardListItem id="_IDGenStandardstorage1"
+           title="{PurchaseLocationModel>StorageLocation}"  
+            description="{PurchaseLocationModel>Description}"
+            iconDensityAware="false"
+            iconInset="false"
+            type="Active" />
+    </SelectDialog>
+</core:FragmentDefinition>

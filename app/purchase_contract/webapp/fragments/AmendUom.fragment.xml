@@ -1,0 +1,18 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+    <SelectDialog
+        id="amendUomFragment"
+        noDataText="{=${amendUomModel>/}.length>0 ? 'Loading...' : 'UOM not found'}"
+        title="Select UOM"
+        liveChange="onUomLiveSearch"
+        confirm="onConfirmAmendUom"
+        items="{amendUomModel>/}">
+        <StandardListItem id="amendIDGenStandardUom"
+            title="{amendUomModel>Msehi}"
+            description="{amendUomModel>Msehl}"
+            iconDensityAware="false"
+            iconInset="false"
+            type="Active" />
+    </SelectDialog>
+</core:FragmentDefinition>

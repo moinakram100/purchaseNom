@@ -1,0 +1,19 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+
+    <SelectDialog
+        id="deliveryPoint"
+        noDataText="{= ${deliveryPointModel>/}.length > 0 ? 'Loading...' : 'Location not found' }"
+        title="Select Location"
+        liveChange="onAmendDeliveryValueHelpSearch"
+        confirm="onConfirmAmendDeliveryPoint"
+        items="{deliveryPointModel>/}">
+        <StandardListItem id="_IDGenStandardListItem11"
+            title="{deliveryPointModel>Locid}"
+            description="{deliveryPointModel>Locnam}"
+            iconDensityAware="false"
+            iconInset="false"
+            type="Active" />
+    </SelectDialog>
+</core:FragmentDefinition>

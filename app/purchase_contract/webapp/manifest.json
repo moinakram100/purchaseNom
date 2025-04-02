@@ -103,6 +103,20 @@
           "target": [
             "TargetPurchaseCreation"
           ]
+        },
+        {
+          "name": "purchaseAmendRoute",
+          "pattern": "purchaseAmend",
+          "target": [
+            "TargetPurchaseAmend"
+          ]
+        },
+        {
+          "name": "purchaseDisplayRoute",
+          "pattern": "purchaseDisplay",
+          "target": [
+            "TargetPurchaseDisplay"
+          ]
         }
       ],
       "targets": {
@@ -113,6 +127,14 @@
         "TargetPurchaseCreation": {
           "id": "CreatePA",
           "name": "CreatePurchaseContract"
+        },
+        "TargetPurchaseAmend": {
+          "id": "amendPA",
+          "name": "AmendPurchaseContract"
+        },
+        "TargetPurchaseDisplay": {
+          "id": "displayPA",
+          "name": "DisplayPurchaseContract"
         }
       }
     },

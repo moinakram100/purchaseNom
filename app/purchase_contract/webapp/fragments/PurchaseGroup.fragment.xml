@@ -1,0 +1,19 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+
+    <SelectDialog
+        id="purchaseGroupFragment"
+        noDataText="No Purchase Group Found"
+        title="Select Purchase Group"
+        liveChange="onValueHelpPurchaseGroupSearch"
+        confirm="onConfirmPurchaseGroupValueHelp"
+        items="{/I_PurchasingGroup}">
+        <StandardListItem id="_IDGenStandardPurchase"
+            title="{PurchasingGroup}"
+            description="{PurchasingGroupName}"
+            iconDensityAware="false"
+            iconInset="false"
+            type="Active" />
+    </SelectDialog>
+</core:FragmentDefinition>

@@ -1,0 +1,29 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+    <SelectDialog
+        id="contractFrag"
+        noDataText="{=${purchaseDataModel>/}.length>0?'Loading':'No Purchase Contract Found'}"
+        title="Select Contract"
+        liveChange="onDisplayContractChange"
+        confirm="onDisplayContractValueHelp"
+         items="{
+            path: 'purchaseDataModel>/',
+            sorter: {
+                path: 'Vbeln',
+                descending: true
+            },
+            filters: [
+                {
+                    path: 'DocType',
+                    operator: 'EQ',
+                    value1: 'P'
+                }
+            ]
+        }">
+        <StandardListItem id="_IDGenStandardListItem1"
+          title="{purchaseDataModel>Vbeln}"
+            description="{purchaseDataModel>CustomerName}"
+            iconDensityAware="false"
+            iconInset="false"
+            type="Active"  />
+    </SelectDialog>
+</core:FragmentDefinition>

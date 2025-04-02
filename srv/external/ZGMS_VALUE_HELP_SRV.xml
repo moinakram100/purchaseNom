@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0"
+    xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+    xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+    xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="http://ingenxsrv:8001/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://ingenxsrv:8001/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://ingenxsrv:8001/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://ingenxsrv:8001/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://ingenxsrv:8001/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZGMS_VALUE_HELP_SRV" xml:lang="en" sap:schema-version="1"
+            xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="Material" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Matnr"/>
+                </Key>
+                <Property Name="Meins" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Base Unit" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/>
+                <Property Name="Matnr" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Material" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="Plant" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Werks"/>
+                </Key>
+                <Property Name="Matnr" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Material" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Werks" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Plant" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="Storage_Loc" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Lgort"/>
+                </Key>
+                <Property Name="Lgort" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Stor. Loc." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="Sold_To_Party" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Kunnr"/>
+                </Key>
+                <Property Name="Kunnr" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Customer" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="Location" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Pblnr"/>
+                </Key>
+                <Property Name="Pblnr" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Location ID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Name1" Type="Edm.String" Nullable="false" MaxLength="35" sap:unicode="false" sap:label="Bus.loc. name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="Transport" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Tsyst"/>
+                </Key>
+                <Property Name="Tsyst" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Trans system" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Tsnam" Type="Edm.String" Nullable="false" MaxLength="60" sap:unicode="false" sap:label="TS name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="Sales_Org" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Vkorg"/>
+                </Key>
+                <Property Name="Vkorg" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Sales Org." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="Dist_Channel" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Vtweg"/>
+                </Key>
+                <Property Name="Vtweg" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Distr. Channel" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="Division" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Spart"/>
+                </Key>
+                <Property Name="Spart" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Division" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="Ship_To_Party" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Kunnr"/>
+                </Key>
+                <Property Name="Kunnr" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Customer" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Vkorg" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Sales Org." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Spart" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Division" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="Sales_Contract" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Vbeln"/>
+                </Key>
+                <Property Name="Vbeln" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Sales Document" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="LocMatnr" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Pmatnr"/>
+                </Key>
+                <Property Name="Locid" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Location ID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Pluom" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Plan UoM" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/>
+                <Property Name="Pmatnr" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Material" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Locname" Type="Edm.String" Nullable="false" MaxLength="60" sap:unicode="false" sap:label="Location name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Pmatname" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Description" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="UOM" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Msehi"/>
+                </Key>
+                <Property Name="Msehi" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Internal UoM" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/>
+            </EntityType>
+            <EntityType Name="LocationPoint" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Locid"/>
+                </Key>
+                <Property Name="Locid" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Location ID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Loctyp" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Location type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Locnam" Type="Edm.String" Nullable="false" MaxLength="60" sap:unicode="false" sap:label="Location name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="TsystLoc" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Tsyst"/>
+                </Key>
+                <Property Name="Tsyst" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Trans system" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Locid" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Location ID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Locnam" Type="Edm.String" Nullable="false" MaxLength="60" sap:unicode="false" sap:label="Location name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ContractType" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Auart"/>
+                </Key>
+                <Property Name="Kopgr" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Screen seq.grp" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Auart" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Sales Doc. Type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ZLocMatnrType" sap:label="Location Material" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Locid"/>
+                    <PropertyRef Name="Pmatnr"/>
+                </Key>
+                <Property Name="Locid" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Location ID"/>
+                <Property Name="Pmatnr" Type="Edm.String" Nullable="false" MaxLength="40" sap:display-format="UpperCase" sap:label="Material" sap:quickinfo="Material Number"/>
+                <Property Name="Locname" Type="Edm.String" MaxLength="60" sap:label="Location name" sap:quickinfo="Location name (used by system owner)"/>
+                <Property Name="Pmatname" Type="Edm.String" MaxLength="40" sap:label="Material description"/>
+                <Property Name="Pluom" Type="Edm.String" MaxLength="3" sap:label="Planning UoM" sap:quickinfo="OIL-TSW: Planning UoM" sap:semantics="unit-of-measure"/>
+            </EntityType>
+            <EntityType Name="ZLocPath_MapType" sap:label="Location Path Mapping Value Help" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Pblnr"/>
+                    <PropertyRef Name="Tsyst"/>
+                    <PropertyRef Name="Locid"/>
+                    <PropertyRef Name="Pbltyp"/>
+                </Key>
+                <Property Name="Pblnr" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Business location ID" sap:quickinfo="Business location identifier (IS-Oil MRN)"/>
+                <Property Name="Tsyst" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Transport system"/>
+                <Property Name="Locid" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Location ID"/>
+                <Property Name="Pbltyp" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Bus. Location Type" sap:quickinfo="Business Location Type (IS-Oil MRN)"/>
+                <Property Name="Delivery_Point" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Origin" sap:quickinfo="OIL-TSW: Location is origin flag"/>
+                <Property Name="Redelivery_Point" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Destination" sap:quickinfo="OIL-TSW: Location destination flag"/>
+            </EntityType>
+            <EntityContainer Name="ZGMS_VALUE_HELP_SRV_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="MaterialSet" EntityType="ZGMS_VALUE_HELP_SRV.Material" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="PlantSet" EntityType="ZGMS_VALUE_HELP_SRV.Plant" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="Storage_LocSet" EntityType="ZGMS_VALUE_HELP_SRV.Storage_Loc" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="Sold_To_PartySet" EntityType="ZGMS_VALUE_HELP_SRV.Sold_To_Party" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="LocationSet" EntityType="ZGMS_VALUE_HELP_SRV.Location" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="TransportSet" EntityType="ZGMS_VALUE_HELP_SRV.Transport" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="Sales_OrgSet" EntityType="ZGMS_VALUE_HELP_SRV.Sales_Org" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="Dist_ChannelSet" EntityType="ZGMS_VALUE_HELP_SRV.Dist_Channel" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="DivisionSet" EntityType="ZGMS_VALUE_HELP_SRV.Division" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="Ship_To_PartySet" EntityType="ZGMS_VALUE_HELP_SRV.Ship_To_Party" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="Sales_ContractSet" EntityType="ZGMS_VALUE_HELP_SRV.Sales_Contract" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="LocMatnrSet" EntityType="ZGMS_VALUE_HELP_SRV.LocMatnr" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="UOMSet" EntityType="ZGMS_VALUE_HELP_SRV.UOM" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="LocationPointSet" EntityType="ZGMS_VALUE_HELP_SRV.LocationPoint" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="TsystLocSet" EntityType="ZGMS_VALUE_HELP_SRV.TsystLoc" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="ContractTypeSet" EntityType="ZGMS_VALUE_HELP_SRV.ContractType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="ZLocMatnr" EntityType="ZGMS_VALUE_HELP_SRV.ZLocMatnrType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZLocPath_Map" EntityType="ZGMS_VALUE_HELP_SRV.ZLocPath_MapType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+            </EntityContainer>
+            <Annotations Target="ZGMS_VALUE_HELP_SRV.ZGMS_VALUE_HELP_SRV_Entities"
+                xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Aggregation.ApplySupported">
+                    <Record>
+                        <PropertyValue Property="Transformations">
+                            <Collection>
+                                <String>aggregate</String>
+                                <String>groupby</String>
+                                <String>filter</String>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Rollup" EnumMember="None"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <atom:link rel="self" href="http://ingenxsrv:8001/sap/opu/odata/sap/ZGMS_VALUE_HELP_SRV/$metadata"
+                xmlns:atom="http://www.w3.org/2005/Atom"/>
+                <atom:link rel="latest-version" href="http://ingenxsrv:8001/sap/opu/odata/sap/ZGMS_VALUE_HELP_SRV/$metadata"
+                    xmlns:atom="http://www.w3.org/2005/Atom"/>
+                </Schema>
+            </edmx:DataServices>
+        </edmx:Edmx>

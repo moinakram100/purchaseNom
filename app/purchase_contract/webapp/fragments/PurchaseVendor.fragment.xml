@@ -1,0 +1,18 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+    <SelectDialog
+        id="vendorFragment"
+        noDataText="No Vendor Found"
+        title="Select Vendor"
+        liveChange="onValueHelpVendorSearch"
+        confirm="onSelectVendorNo"
+        items="{/I_Supplier}">
+        <StandardListItem id="_IDGenStandardVendor"
+            title="{Supplier}"
+            description="{SupplierName}"
+            iconDensityAware="false"
+            iconInset="false"
+            type="Active" />
+    </SelectDialog>
+</core:FragmentDefinition>

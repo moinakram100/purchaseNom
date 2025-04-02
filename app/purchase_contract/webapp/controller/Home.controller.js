@@ -9,6 +9,14 @@ sap.ui.define([
         onCreatePA : function(){
             let oRouter = this.getOwnerComponent().getRouter()
             oRouter.navTo("purchaseCreationRoute")
+        },
+        onAmendPA : function(){
+            let oRouter = this.getOwnerComponent().getRouter()
+            oRouter.navTo("purchaseAmendRoute")
+        },
+        onDisplayPA : function(){
+            let oRouter = this.getOwnerComponent().getRouter()
+            oRouter.navTo("purchaseDisplayRoute")
         }
     });
 });

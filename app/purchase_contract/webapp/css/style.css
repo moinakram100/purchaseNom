@@ -1,1 +1,99 @@
-/* Enter your custom styles here */
+
+/* TAB BAR ICON */
+
+.sapMITH .sapMITBHead .sapMITBFilter:first-child .sapMITBFilter:second-child {
+   padding-left: 0;
+   margin-left: 0;
+   margin-right: 15px;
+}
+ 
+.sapMITBFilter .sapMITBText {
+   width: 100%;
+}
+
+/* CPA TABLE */
+
+.formArea {
+   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+   background-color: #fff;
+   border-radius: 2px;
+   margin-left: -1px !important;
+}
+
+.tileLayout {
+   box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.1);
+   transition: 0.3s;
+   margin: 10px;
+}
+
+.tileLayout:hover {
+   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.toolHeaderShadow {
+   box-shadow: 4px 8px 16px 4px rgba(0, 0, 0, 0.1);
+   transition: 0.3s;
+}
+
+.toolHeaderShadow:hover {
+   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* 18-02-2025 */
+.sapUiBlockLayoutBackgroundDashboard:not(.sapUiBlockLayoutSizeS) .sapUiBlockLayoutRow:first-of-type .sapUiBlockCellContent {
+   margin: 0.3rem 0.4rem 1rem 0.4rem !important;
+}
+.sapUiBlockLayoutSizeL:not(.sapUiBlockLayoutKeepFontSize) .sapUiBlockCellContent {
+   padding: 1rem 1rem !important;
+   font-size: 1rem;
+}
+.sapTntToolHeader .sapMTitle {
+   font-size: 1rem;
+   line-height: 1.625rem;
+   color: #003e87;
+   font-weight: bold;
+   margin-left: 10px;
+}
+
+.selectArea{
+   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+   padding: 8px;
+   width : 100.3%;
+   margin-right: -4px;
+}
+.selectArea2{
+   width : 99%
+}
+
+/* remove form top-padding */
+.sapUiSizeCompact .sapUiFormContainerTitle>.sapUiFormTitle {
+   height: 0rem !important;
+   line-height: 1rem;
+}
+
+.customInput{
+   margin-top: 7px ;
+   margin-right: 5px;
+   /* border : 2px solid orange; */
+
+}
+.dynamicField{
+   /* border: 2px solid red; */
+   margin-left: 19.3%;
+   width: 70% !important;
+}
+.dynamicFieldRight{
+   margin-left: 19.2%;
+   width: 70% !important;
+}
+
+.singleGroup{
+   width: 72%;
+   display: flex;
+   justify-content: end;
+}
+.customLabel{
+   padding-right: 9px;
+}
+
+

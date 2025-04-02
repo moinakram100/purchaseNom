@@ -1,0 +1,19 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+
+    <SelectDialog
+        id="materialFragment"
+        noDataText="No Material Found"
+        title="Select Material"
+        liveChange="onMaterialLiveSearch"
+        confirm="onConfirmPurchaseMaterial"
+        items="{materialModel>/}">
+        <StandardListItem id="_IDGenStandardListItem7"
+            title="{materialModel>Material}"
+            description="{materialModel>MaterialDescription}"
+            iconDensityAware="false"
+            iconInset="false"
+            type="Active" />
+    </SelectDialog>
+</core:FragmentDefinition>

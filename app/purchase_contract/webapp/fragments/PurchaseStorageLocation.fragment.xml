@@ -1,0 +1,19 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+
+    <SelectDialog
+        id="storageLocationFragment"
+        noDataText="No Plant Found"
+        title="Select Storage Location"
+        liveChange="onStorageLiveSearch"
+        confirm="onConfirmStorageLocation"
+        items="{storageDataModel>/}">
+        <StandardListItem id="_IDGenStandardListItem"
+            title="{storageDataModel>StorageLocation}"
+            description="{storageDataModel>Description}"
+            iconDensityAware="false"
+            iconInset="false"
+            type="Active" />
+    </SelectDialog>
+</core:FragmentDefinition>

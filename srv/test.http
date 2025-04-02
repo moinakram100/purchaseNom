@@ -1,0 +1,247 @@
+GET http://localhost:4004/odata/v4/purchasecontract/getPurchaseDocTypeNServiceProfile
+
+###
+GET http://localhost:4004/odata/v4/purchasecontract/getVendorOrgDetails?Supplier='40001'
+
+
+###
+
+GET http://localhost:4004/odata/v4/purchasecontract/PurchaseContractNos
+ 
+###
+GET http://localhost:4004/odata/v4/purchasecontract/getMaterialPlantDetails?Material='3'
+###
+ 
+GET http://localhost:4004/odata/v4/purchasecontract/getMaterialStorageLocDetails?Plant='GP01'
+
+###
+
+GET http://localhost:4004/odata/v4/purchasecontract/getSelectedProfileData?serviceProfileName='GSPA001'
+
+###
+
+{
+"@odata.context": "$metadata#CreateSPSet/$entity",
+"Vbeln": "4600000327",
+"toHeaderItemCfg": [],
+"toContractHeader": [],
+"SalesToItemNav": [
+{
+"DocType": "P",
+"Path": "",
+"Material": "2000000068",
+"ThresholdP": "20",
+"Vbeln": "4600000327",
+"ItemNo": "000010",
+"ClauseCode": "Min DCQ",
+"ValidFrom": "2025-02-19T00:00:00Z",
+"ValidTo": "2026-02-19T00:00:00Z",
+"ThreshRef": "DCQ",
+"Remark": "Min",
+"CalculatedValue": "54.6"
+},
+{
+"DocType": "P",
+"Path": "",
+"Material": "2000000068",
+"ThresholdP": "18",
+"Vbeln": "4600000327",
+"ItemNo": "000010",
+"ClauseCode": "Max DCQ",
+"ValidFrom": "2025-02-19T00:00:00Z",
+"ValidTo": "2026-02-19T00:00:00Z",
+"ThreshRef": "DCQ",
+"Remark": "Max",
+"CalculatedValue": "49.14"
+}
+],
+"SalesToHeaderNav": [
+{
+"DocType": "P",
+"FuelPercentage": "0.00",
+"ItemNo": "000010",
+"Material": "2000000068",
+"Path": "",
+"ServProfile": "GSPA001",
+"Vbeln": "4600000327",
+"SalesDesc": "",
+"ServiceParam": "Level 2",
+"ParamValue": "MakeUp Gas",
+"ParamType": "ALLOCATION",
+"DeliveryPt": "DAHEJ",
+"RedeliveryPt": ""
+},
+{
+"DocType": "P",
+"FuelPercentage": "0.00",
+"ItemNo": "000010",
+"Material": "2000000068",
+"Path": "",
+"ServProfile": "GSPA001",
+"Vbeln": "4600000327",
+"SalesDesc": "",
+"ServiceParam": "DCQ",
+"ParamValue": "273",
+"ParamType": "VALUE",
+"DeliveryPt": "DAHEJ",
+"RedeliveryPt": ""
+},
+{
+"DocType": "P",
+"FuelPercentage": "0.00",
+"ItemNo": "000010",
+"Material": "2000000068",
+"Path": "",
+"ServProfile": "GSPA001",
+"Vbeln": "4600000327",
+"SalesDesc": "",
+"ServiceParam": "Level 1",
+"ParamValue": "Firm",
+"ParamType": "ALLOCATION",
+"DeliveryPt": "DAHEJ",
+"RedeliveryPt": ""
+},
+{
+"DocType": "P",
+"FuelPercentage": "0.00",
+"ItemNo": "000010",
+"Material": "2000000068",
+"Path": "",
+"ServProfile": "GSPA001",
+"Vbeln": "4600000327",
+"SalesDesc": "",
+"ServiceParam": "Rank",
+"ParamValue": "1",
+"ParamType": "VALUE",
+"DeliveryPt": "DAHEJ",
+"RedeliveryPt": ""
+}
+],
+"toOrgDetail": {
+"Vbeln": "4600000327",
+"SoldToParty": "2100005",
+"SoldToPartyText": "NG VENDOR Domestic",
+"ShipToParty": "",
+"ShipToPartyText": "",
+"SalesOrg": "",
+"SalesOrgText": "",
+"DistributionChannel": "",
+"DistributionChannelText": "",
+"Division": "",
+"DivisionText": "",
+"Description": "",
+"CompanyCode": "GOIL",
+"CompanyCodeText": "General Oil Company.",
+"PurchOrg": "GPO1",
+"PurchOrgText": "GOIL Dom. Pur.Org.",
+"PurchGrp": "LCL",
+"PurchGrpText": "Local",
+"DocType": "P",
+"ValidFrom": "2025-02-20",
+"ValidTo": "2026-02-20",
+"Type": "GSPA"
+},
+"toCapDetails": [
+{
+"Vbeln": "4600000327",
+"Item": "000010",
+"Material": "2000000068",
+"MaterialText": "NG",
+"TargetQty": "100000.000",
+"Uom": "MBT",
+"DCQ": "0.000",
+"Plant": "GAIL",
+"PlantText": "GAIL PLANT",
+"ServProfile": "GSPA001",
+"RedeliveryPt": "",
+"RedeliveryPtText": "",
+"DeliveryPt": "",
+"DeliveryPtText": "",
+"Transmissiontype": "",
+"StorageLocation": "GL1",
+"StorageLocationName": "SL 1"
+}
+]
+}
+
+###
+POST http://localhost:4004/odata/v4/purchasecontract/CreatePurchaseSet
+Content-Type: application/json
+
+{
+    "VperStart": "2025-02-20",
+    "VperEnd": "2026-02-20",
+    "DocType": "GSPA",
+    "to_Items": [
+        {
+            "PeriodIndExpirationDate": "D"
+        }
+    ]
+}
+
+###
+POST http://localhost:4004/odata/v4/purchasecontract/createContractSet
+Content-Type: application/json
+
+{"Vbeln":"4600000382",
+"toClausecode":[
+ 
+    ],
+    "toCustfld":[
+        {"ItemNo":"000010",
+        "ContractField":"test ",
+        "Fieldlevel":"ORG",
+        "FieldValue":"",
+        "DocType":""},
+        {"ItemNo":"000010",
+        "ContractField":"test2",
+        "Fieldlevel":"CAP",
+        "FieldValue":"2",
+        "DocType":""}
+        ],
+        "toHeaderTable":[
+            {"Vbeln":"4600000382",
+            "Item":"000010",
+            "Material":"2000000068",
+            "DeliveryPoint":"",
+            "DeliveryText":"",
+            "RedeliveryPoint":"",
+            "RedeliveryText":"",
+            "Plant":"GAIL",
+            "Uom":"MBT",
+            "DPTargetQty":"1200",
+            "ValidFrom":"2025-03-12T00:00:00Z",
+            "ValidTo":"2026-03-12T00:00:00Z",
+            "Profile":"GSPA001",
+            "DeliveryDcq":"",
+            "RedeliveryDcq":"",
+            "Type":"",
+            "SALES_DESC":"GSPA",
+            "Contracttype":"P"}
+            ],
+            "toservpara":[
+                {"ServiceParam":"Rank",
+                "ParamValue":"1",
+                "Vbeln":"4600000382",
+                "ItemNo":"000010",
+                "ServProfile":"GSPA001",
+                "ParamType":"VALUE"},
+                {"ServiceParam":"1",
+                "ParamValue":"Firm",
+                "Vbeln":"4600000382",
+                "ItemNo":"000010",
+                "ServProfile":"GSPA001",
+                "ParamType":"ALLOCATION"},
+                {"ServiceParam":"2",
+                "ParamValue":"MakeGood Gas",
+                "Vbeln":"4600000382",
+                "ItemNo":"000010",
+                "ServProfile":"GSPA001",
+                "ParamType":"ALLOCATION"},
+                {"ServiceParam":"3",
+                "ParamValue":"-ve Imbalance",
+                "Vbeln":"4600000382",
+                "ItemNo":"000010",
+                "ServProfile":"GSPA001",
+                "ParamType":"ALLOCATION"}
+                ]}

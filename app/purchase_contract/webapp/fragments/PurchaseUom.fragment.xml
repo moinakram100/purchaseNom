@@ -1,0 +1,18 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+    <SelectDialog
+        id="uomFragment"
+        noDataText="No UOM Found"
+        title="Select UOM"
+        liveChange="onUomLiveSearch"
+        confirm="onConfirmUom"
+        items="{/xGMSxUOM_value}">
+        <StandardListItem id="_IDGenStandardUom"
+            title="{Msehi}"
+            description="{Msehl}"
+            iconDensityAware="false"
+            iconInset="false"
+            type="Active" />
+    </SelectDialog>
+</core:FragmentDefinition>

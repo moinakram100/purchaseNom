@@ -1,0 +1,619 @@
+<mvc:View
+    controllerName="com.ingenx.purchasecontract.controller.AmendPurchaseContract"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:table="sap.ui.table"
+    busyIndicatorDelay="0"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.f"
+    xmlns:tnt="sap.tnt"
+    height="520px"
+    xmlns:l="sap.ui.layout"
+>
+  <Page id="amend_Page" showHeader="false">
+
+  <tnt:ToolHeader id="amend_mainToolheaded" class="sapUiTinyMargin ">
+            <Title id="amend_Title_FieldDefinition" text="Amend Purchase Contract" wrapping="true" level="H3" />
+            <ToolbarSpacer id="amend_ToolbarSpacer" />
+    </tnt:ToolHeader>
+  
+<ScrollContainer id="amend_ScrollContainer">
+        <l:VerticalLayout id="amend_VerticalLayout" width="100%">
+            <l:BlockLayout id="amend_BlockLayout" background="Dashboard">
+
+             <l:BlockLayoutRow id="amend_BlockLayoutRow3">
+                    <l:BlockLayoutCell id="amend_GenBlockLayoutCell3">
+                    <HBox
+                        id="amendHBox1"
+                        class="sapUiTinyMarginTop selectArea"
+                    >
+                        <Label
+                            id="amendDocumentTypeLabel"
+                            class="sapUiTinyMargin"
+                            text="Purchase-Contract No:"
+                            design="Bold"
+                        />
+                        <Input
+                    id="purchaseNumber"
+                    width="200px"
+                    showValueHelp="true"
+                    valueHelpRequest="onAmmendContractValueHelp"
+                    liveChange="selectContract"
+                />
+                    </HBox>
+
+
+            <IconTabBar
+                id="iconTabBarHeader1"
+                class="sapUiSmallMarginTop sapUiSmallMarginBottom selectArea selectArea2"
+                select="onSelectoptions"
+                visible="false"
+            >
+                <items>
+                    <IconTabFilter
+                        id="amendIconTabFilter1"
+                        text="Org Details"
+                        key="headerDetails"
+                        icon="sap-icon://header"
+                        class="sapUiTinyMargin"
+                    >
+                        <form:SimpleForm
+                            id="amendSimpleForm1"
+                            class="sapUiTinyMargin formArea"
+                            editable="true"
+                        >
+                            <form:toolbar>
+                                <Toolbar id="TB11">
+                                    <Title
+                                        id="Title11"
+                                        text="Org Details"
+                                    />
+                                    <ToolbarSpacer id="amendToolbarSpacer4" />
+
+                                </Toolbar>
+                            </form:toolbar>
+                            <form:content>
+                                <core:Title id="amendTitle1" />
+                                <VBox id="amendOrgDetailsContainer" class="dynamicField"/>
+                                <Label
+                                    id="amendVendorLabel"
+                                    text="Vendor" 
+                                />
+                                <HBox>
+                                    <Input
+                                        id="amend_vendorID"
+                                        width="200px"
+                                        editable="false"
+                                        value="{orgDetailsDataModel>/SoldToParty}"
+                                    />
+                                    <Input
+                                        id="amend_vendorDesc"
+                                        width="200px"
+                                        editable="false"
+                                        class="sapUiTinyMarginBegin"
+                                        value="{orgDetailsDataModel>/SoldToPartyText}"
+                                        visible="{=${orgDetailsDataModel>/SoldToPartyText} ? true : false}"
+                                    />
+                                </HBox>
+                                <Label
+                                    id="amend_CompanyCodeLabel"
+                                    text="Company Code"
+                                />
+                                <HBox>
+                                    <Input
+                                        id="amend_companyCode"
+                                        width="200px"
+                                        editable="false"
+                                        value="{orgDetailsDataModel>/CompanyCode}"
+                                    />
+                                    <Input
+                                        id="amend_companyCodeDesc"
+                                        width="200px"
+                                        editable="false"
+                                        class="sapUiTinyMarginBegin"
+                                        value="{orgDetailsDataModel>/CompanyCodeText}"
+                                        visible="{=${orgDetailsDataModel>/CompanyCodeText} ? true : false}"
+                                    />
+                                </HBox>
+                                <Label
+                                    id="amend_purchaseOrgLabel"
+                                    text="Purchase Organisation"
+                                    
+                                />
+                                <HBox>
+                                    <Input
+                                        id="amend_purchaseOrg"
+                                        width="200px"
+                                        editable="false"
+                                        value="{orgDetailsDataModel>/PurchOrg}"
+                                    />
+                                    <Input
+                                        id="amend_purchaseOrgDesc"
+                                        width="200px"
+                                        editable="false"
+                                        class="sapUiTinyMarginBegin"
+                                        value="{orgDetailsDataModel>/PurchOrgText}"
+                                        visible="{=${orgDetailsDataModel>/PurchOrgText} ? true : false}"
+                                    />
+                                </HBox>
+                                <core:Title id="amend_Title3" />
+                                <VBox id="amendOrgDetailsContainer2" class="dynamicFieldRight"/>
+                                <Label
+                                    id="amend_purchaseGroupLabel"
+                                    text="Purchase Group"
+                                />
+                                <HBox>
+                                    <Input
+                                        id="amend_purchaseGroup"
+                                        width="200px"
+                                        editable="false"
+                                        value="{orgDetailsDataModel>/PurchGrp}"
+                                    />
+                                    <Input
+                                        id="amend_purchaseGroupDesc"
+                                        width="200px"
+                                        editable="false"
+                                        class="sapUiTinyMarginBegin"
+                                        value="{orgDetailsDataModel>/PurchGrpText}"
+                                        visible="{=${orgDetailsDataModel>/PurchGrpText} ? true : false}"
+                                    />
+                                </HBox>
+                                <Label
+                                    id="amend_startDateLabel"
+                                    text="Start Date"
+                                    
+                                />
+                                <DatePicker
+                                    id="amend_startDate"
+                                    placeholder="‎"
+                                    change="onSelectDate"
+                                    width="200px"
+                                    required="true"
+                                    ariaLabelledBy=""
+                                    value="{ path: 'orgDetailsDataModel>/ValidFrom', formatter: '.formatDate' }"
+                                />
+                                <Label
+                                    id="amend_endDateLabel"
+                                    text="End Date"
+                                    
+                                />
+                                <DatePicker
+                                    id="amend_EndDate"
+                                    placeholder="‎"
+                                    change="onSelectDate"
+                                    width="200px"
+                                    required="true"
+                                    value="{ path: 'orgDetailsDataModel>/ValidTo', formatter: '.formatDate' }"
+                                />
+                            </form:content>
+                        </form:SimpleForm>
+                    </IconTabFilter>
+                    <IconTabFilter
+                        id="amend_IconTabFilter2"
+                        key="itemDetails"
+                        text="Capacity Details"
+                        icon="sap-icon://activity-items"
+                    >
+                        <form:SimpleForm
+                            id="adSimpleForm2"
+                            class="formArea sapUiTinyMargin"
+                            editable="true"
+                        >
+                            <form:toolbar>
+                                <Toolbar id="TB4">
+                                    <Title
+                                        id="Title4"
+                                        text="Capacity Details"
+                                    />
+
+                                </Toolbar>
+                            </form:toolbar>
+                            <form:content>
+                                <core:Title id="Title5" />
+                                <HBox id="amendCapacityReleaseContainer" class="dynamicField"/>
+                                <Label
+                                    id="amend_materialLabel"
+                                    text="Material"
+                                    
+                                />
+                                <HBox id="materialBox1">
+                                    <Input
+                                        id="amend_material"
+                                        width="200px"
+                                        editable="false"
+                                        value="{capacityRelDataModel>/Material}"
+                                    />
+                                    <Input
+                                        id="amend_materialDesc"
+                                        width="200px"
+                                        editable="false"
+                                        class="sapUiTinyMarginBegin"
+                                        value="{capacityRelDataModel>/MaterialText}"
+                                        visible="{= ${capacityRelDataModel>/MaterialText} ? true : false }"
+                                    />
+                                </HBox>
+
+                                 <Label
+                                    id="amend_dcqLabel"
+                                    text="DCQ"
+                                    
+                                />
+                                <Input
+                                    id="amend_dcq"
+                                    width="200px"
+                                    required="true"
+                                    change="onDCQChange"
+                                    liveChange="deriveNetDCQ"
+                                    value="{capacityRelDataModel>/DeliveryDcq}"
+                                />
+
+                                <Label
+                                    id="amend_targetQtyLabel"
+                                    text="Target Quantity" 
+                                    required="true"
+                                />
+                                <Input
+                                    id="amend_targetQty"
+                                    width="200px"
+                                    editable="false"
+                                    change="onInputChange"
+                                    busy="false"
+                                    value="{capacityRelDataModel>/DPTargetQty}"
+                                />
+
+                               
+                                <Label
+                                    id="amend_uomLabel"
+                                    text="UOM"
+                                    
+                                />
+                                <Input
+                                    id="amend_uom"
+                                    width="200px"
+                                    showValueHelp="true"
+                                    valueHelpRequest="onUomValueHelp"
+                                    value="{capacityRelDataModel>/Uom}"
+                                    required="true"
+                                    valueHelpOnly="true"
+                                />
+                                <core:Title id="Title6" />
+                                <HBox id="amendCapacityReleaseContainer2" class="dynamicField"/>
+                                <Label
+                                    id="amend_plantLabel"
+                                    text="Plant"
+                                    required="true"
+                                />
+                                <HBox id="HBox2">
+                                    <Input
+                                        id="amend_plant"
+                                        width="200px"
+                                        editable="true"
+                                        value="{capacityRelDataModel>/Plant}"
+                                        showValueHelp="true"
+                                        valueHelpRequest="onPlantValueHelp"
+                                    />
+                                    <Input
+                                        id="amend_plantDesc"
+                                        width="200px"
+                                        editable="false"
+                                        class="sapUiTinyMarginBegin"
+                                        value="{capacityRelDataModel>/PlantText}"
+                                        visible="{= ${capacityRelDataModel>/PlantText} ? true : false }"
+
+                                    />
+                                </HBox>
+                                <Label
+                                    id="amend_storageLocationLabel"
+                                    text="Storage Location"
+                                    required="true"
+                                    
+                                />
+                                <HBox id="HBox">
+                                    <Input
+                                        id="amend_storageLocation"
+                                        width="200px"
+                                        showValueHelp="true"
+                                        valueHelpRequest="onStorageValueHelp"
+                                        value="{capacityRelDataModel>/storagelocation}"
+                                        required="true"
+                                        valueHelpOnly="true"
+                                    />
+                                    <!-- <Input
+                                        id="storageDesc1"
+                                        width="200px"
+                                        editable="false"
+                                        visible="false"
+                                        class="sapUiTinyMarginBegin"
+                                    /> -->
+                                </HBox>
+                                <Label
+                                    id="amend_serviceProfileLabel"
+                                    text="Service Profile"
+                                    class="servProLabel"
+                                    
+                                />
+                            <HBox class="sapUiSmallMarginEnd">
+                                <Input id="amend_serviceProfile" value="{capacityRelDataModel>/Profile}" class="materialDesc" editable="false" width="200px" />
+                            </HBox>
+                                
+                               <Label
+                                                id="amend_deliveryPointLabel"
+                                                wrapping="true"
+                                                text="Delivery Point"
+                                />
+                                <HBox id="IDGenHBox1">
+                                    <Input
+                                        id="amend_deliveryPoint"
+                                        width="200px"
+                                        showValueHelp="true"
+                                        valueHelpRequest="onDeliveryValueHelp"
+                                        required="true"
+                                        editable="false"
+                                        value="{capacityRelDataModel>/DeliveryPoint}"
+                                    />
+                                    <Input
+                                        id="delivery_Desc1"
+                                        width="200px"
+                                        editable="false"
+                                        class="sapUiTinyMarginBegin"
+                                        value="{capacityRelDataModel>/DeliveryText}"
+                                        visible="{= ${capacityRelDataModel>/DeliveryText} ? true : false }"
+                                    />
+                                </HBox>
+                              </form:content>
+                        </form:SimpleForm>
+                    </IconTabFilter>
+                    <IconTabFilter
+                        id="amend_IconTabFilter3"
+                        text="Service Catalogue"
+                        icon="sap-icon://crm-service-manager"
+                        key="servDetails"
+                        class="iconText"
+                    >
+                      <Table
+                            items="{valueModel>/}"
+                            id="amend_valueParameterTable"
+                            class="formArea sapUiTinyMargin"
+                        >
+                            <columns>
+                                <Column
+                                    id="amend_valueParameterCol"
+                                    width="10rem"
+                                >
+                                    <header>
+                                        <Label
+                                            id="amend_valueParameterLabel"
+                                            text="Value Parameter"
+                                        />
+                                    </header>
+                                </Column>
+                                <Column
+                                    id="amend_valueCol"
+                                    width="10rem"
+                                >
+                                    <header>
+                                        <Label
+                                            id="amend_valueLabel"
+                                            text="Value"
+                                        />
+                                    </header>
+                                </Column>
+                            </columns>
+                            <items>
+                                <ColumnListItem id="amend_valueParamColItem">
+                                    <cells>
+                                        <Text
+                                            id="amend_ServiceParam"
+                                            text="{valueModel>ServiceParam}"
+                                        />
+                                        <Input
+                                            id="amend_ParamValue"
+                                            width="100px"
+                                            value="{valueModel>ParamValue}"
+                                            change="tarQuantCalCatlog"
+                                            required="true"
+                                        />
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+                       
+                        <VBox id="VBox6">
+                            <Button
+                                id="amend_addClauseCodeBtn"
+                                text="Add Clause Code"
+                                press="onCreatePress"
+                                class="sapUiTinyMarginTop"
+                                type="Emphasized"
+                            />
+                            <Table
+                                items="{saleitem>/}"
+                                id="amend_clCodeTable"
+                                class="formArea sapUiTinyMargin"
+                            >
+                                <columns>
+                                    <Column id="amend_clauseCodeCol">
+                                        <Text
+                                            id="amend_clauseCodeColText"
+                                            text="Clause Code"
+                                        />
+                                    </Column>
+                                    <Column id="amend_validFromCol">
+                                        <Text
+                                            id="amend_validFromColText"
+                                            text="Valid From"
+                                           
+                                        />
+                                    </Column>
+                                    <Column id="amend_validToCol">
+                                        <Text
+                                            id="amend_validToColText"
+                                            text="Valid To"
+                                        />
+                                    </Column>
+                                    <Column id="amend_ThreshholdCol">
+                                        <Text
+                                            id="amend_ThreshholdColText"
+                                            text="Threshold%"
+                                        />
+                                    </Column>
+                                    <Column id="amend_ThreshholdRefCol">
+                                        <Text
+                                            id="amend_ThreshholdRefColText"
+                                            text="Threshold Reference"
+                                        />
+                                    </Column>
+                                    <Column id="amend_remarkCol">
+                                        <Text
+                                            id="amend_remarkColText"
+                                            text="Remark"
+                                        />
+                                    </Column>
+                                    <Column id="amend_actionCol">
+                                        <Text
+                                            id="amend_actionColText"
+                                            text="Action"
+                                        />
+                                    </Column>
+                                </columns>
+                                <items>
+                                    <ColumnListItem id="amend_clCodeTableListItem">
+                                        <cells>
+                                            <ComboBox
+                                                id="amend_clauseCodeSelectItem"
+                                                items="{ThresholdRelevantModel>/}"
+                                                selectedKey="{threshDataModel>clCode}"
+                                                value="{saleitem>ClauseCode}"
+                                              change="clausecode"
+                                              editable="false"
+                                            >
+                                                <core:Item
+                                                    id="amend_clauseCodeValueItem"
+                                                      key="{ThresholdRelevantModel>serviceParameter}"
+                                                    text="{ThresholdRelevantModel>serviceParameter}"
+                                                />
+                                            </ComboBox>
+                                            <DatePicker
+                                                id="amend_validFromValue"
+                                                width="130px"
+                                                value="{path: 'saleitem>ValidFrom', type: 'sap.ui.model.type.Date', formatOptions: {source: {pattern: 'yyyy-MM-ddTHH:mm:ss\'Z\''}, pattern: 'yyyy/MM/dd'}}"
+                                                change="clausecode"
+                                                required="true"
+                                                editable="false"
+                                            />
+                                            <DatePicker
+                                                id="amend_validToValue"
+                                                width="150px"
+                                                value="{path: 'saleitem>ValidTo', type: 'sap.ui.model.type.Date', formatOptions: {source: {pattern: 'yyyy-MM-ddTHH:mm:ss\'Z\''}, pattern: 'yyyy/MM/dd'}}"
+                                                change="clausecode"
+                                                required="true"
+                                                editable="false"
+                                            />
+                                            <Input
+                                                id="amend_thresholdValue"
+                                                width="150px"
+                                                value="{saleitem>ThresholdP}"
+                                                change="clausecode"
+                                                required="true"
+                                            />
+                                            <ComboBox
+                                                id="amend_thresholdRefComobo"
+                                                width="150px"
+                                              items="{RefrenceRelevantModel>/}"
+                                                selectedKey="{threshDataModel>threshRef}"
+                                                value="{saleitem>ThreshRef}"
+                                                change="clausecode"
+                                            >
+                                                <core:Item
+                                                    id="amend_thresholdRefComoboItem"
+                                                   key="{RefrenceRelevantModel>serviceParameter}"
+                                                    text="{RefrenceRelevantModel>serviceParameter}"
+                                                />
+                                            </ComboBox>
+                                         <Input
+                                                id="amend_remarkValue"
+                                                width="100px"
+                                                value="{saleitem>Remark}"
+                                               
+                                                change="clausecode"
+                                            />
+                                                
+                                            <Button
+                                                id="amend_actionBtn"
+                                                icon="sap-icon://delete"
+                                                press="onDeleteClauseCodeLineitem"
+                                            />
+                                        </cells>
+                                    </ColumnListItem>
+                                </items>
+                            </Table>
+
+                          <Table
+                            id="allocTable2"
+                            items="{allocModel>/allocLevel}"
+                            class="formArea sapUiTinyMarginTop">
+                            
+                            <headerToolbar>
+                                <Toolbar id="create_allocTableTB2">
+                                    <Title id="create_allocTableTitle2" text="Allocation Parameters" />
+                                </Toolbar>
+                            </headerToolbar>
+                            
+                            <columns>
+                                <Column id="create_allocLevelCol2">
+                                    <Text id="create_allocLevelText22" text="Level" />
+                                </Column>
+                                <Column id="create_allocParamCol2">
+                                    <Text id="create_allocParamText2" text="Parameters" />
+                                </Column>
+                            </columns>
+    
+            <items>
+                <ColumnListItem id="allocTableListItem2">
+                    <cells>
+                        <Text id="allocTableLevel2" text="{allocModel>Level}" />
+                        
+                        <Select
+                            id="allocTableParamSelect2"
+                            selectedKey="{allocModel>selectedParam}"
+                            width="200px"
+                            forceSelection="false"
+                            items="{
+                                path: 'allocModel>Parameters',
+                                templateShareable: true
+                            }">
+                            <core:Item key="{allocModel>key}" text="{allocModel>text}" />
+                        </Select>
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+
+
+                            <Button
+                                id="amend_submitButton"
+                                text="Submit"
+                                width="100px"
+                                class="sapUiTinyMarginTop"
+                                type="Emphasized"
+                                press="submitPurchaseAgreement"
+                            />
+                        </VBox>
+                    </IconTabFilter>
+                </items>
+            </IconTabBar>
+    
+                    </l:BlockLayoutCell>
+             </l:BlockLayoutRow>
+
+              
+           </l:BlockLayout>
+        </l:VerticalLayout>
+     </ScrollContainer>
+     </Page>
+</mvc:View>
+
+
+

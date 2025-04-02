@@ -5,29 +5,29 @@
     xmlns="sap.m"
 >
     <OverflowToolbar
-        id="_IDGenOverflowToolbar9"
+        id="purchaseContractTb"
         height="50px"
     >
         <Title
-            id="pageHeader"
+            id="purchaseContractTitle"
             text="Purchase Agreement Panel"
             textAlign="Center"
         />
     </OverflowToolbar>
     <Page
-        id="page"
+        id="purchaseContractPage"
         showHeader="false"
     >
         <content>
             <GenericTile
-                id="_IDGenGenericTile1"
+                id="purchaseContractCreatePATile"
                 class="sapUiSmallMarginBegin sapUiSmallMarginTop tileLayout"
                 header="Create Gas Purchase Agreement"
                 press="onCreatePA"
             >
-                <TileContent id="_IDGenTileContent1">
+                <TileContent id="purchaseContractCreatePATileContent">
                     <ImageContent
-                        id="_IDGenImageContent1"
+                        id="purchaseContractCreatPAImage"
                         src="sap-icon://decision"
                     />
                 </TileContent>
@@ -39,9 +39,9 @@
                 header="Amend Gas Purchase Agreement"
                 press="onAmendPA"
             >
-                <TileContent id="_IDGenTileContent2">
+                <TileContent id="purchaseContractAmendPATileContent">
                     <ImageContent
-                        id="_IDGenImageContent2"
+                        id="purchaseContractCreatPAImage2"
                         src="sap-icon://edit"
                     />
                 </TileContent>
@@ -53,9 +53,9 @@
                 header="Display Gas Purchase Agreement"
                 press="onDisplayPA"
             >
-                <TileContent id="_IDGenTileConten3">
+                <TileContent id="purchaseContractdisplayagreementPATileContent">
                     <ImageContent
-                        id="_IDGenImageContent3"
+                        id="purchaseContractCreatPAImage3"
                         src="sap-icon://manager-insight"
                     />
                 </TileContent>

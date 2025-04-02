@@ -1,0 +1,585 @@
+<mvc:View
+    controllerName="com.ingenx.purchasecontract.controller.DisplayPurchaseContract"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:table="sap.ui.table"
+    busyIndicatorDelay="0"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.f"
+    xmlns:tnt="sap.tnt"
+    height="520px"
+    xmlns:l="sap.ui.layout"
+>
+  <Page id="display_Page" showHeader="false">
+
+  <tnt:ToolHeader id="display_mainToolheaded" class="sapUiTinyMargin ">
+            <Title id="display_Title_FieldDefinition" text="Display Purchase Contract" wrapping="true" level="H3" />
+            <ToolbarSpacer id="display_ToolbarSpacer" />
+    </tnt:ToolHeader>
+  
+<ScrollContainer id="display_ScrollContainer">
+        <l:VerticalLayout id="display_VerticalLayout" width="100%">
+            <l:BlockLayout id="display_BlockLayout" background="Dashboard">
+
+             <l:BlockLayoutRow id="display_BlockLayoutRow3">
+                    <l:BlockLayoutCell id="display_GenBlockLayoutCell3">
+                    <HBox
+                        id="display_amendHBox1"
+                        class="sapUiTinyMarginTop selectArea"
+                    >
+                        <Label
+                            id="display_contraceLabel"
+                            class="sapUiTinyMargin"
+                            text="Purchase-Contract No:"
+                            design="Bold"
+                        />
+                        <Input
+                    id="display_purchaseNumberInput"
+                    width="200px"
+                    showValueHelp="true"
+                    valueHelpRequest="onDisplayContract"
+                    liveChange="selectContract"
+                />
+                    </HBox>
+
+
+            <IconTabBar
+                id="display_iconTabBarHeader1"
+                class="sapUiSmallMarginTop sapUiSmallMarginBottom selectArea selectArea2"
+                select="onSelectoptions"
+                visible="false"
+            >
+                <items>
+                    <IconTabFilter
+                        id="display_IconTabFilter1"
+                        text="Org Details"
+                        key="headerDetails"
+                        icon="sap-icon://header"
+                        class="sapUiTinyMargin"
+                    >
+                        <form:SimpleForm
+                            id="display_orgDetailsSimpleForm"
+                            class="tableBorder sapUiTinyMargin formArea"
+                            editable="true"
+                        >
+                            <form:toolbar>
+                                <Toolbar id="display_TB1">
+                                    <Title
+                                        id="display_orgDetailsTitle"
+                                        text="Org Details"
+                                    />
+                                </Toolbar>
+                            </form:toolbar>
+                            <form:content>
+                                <core:Title id="display_Title1" />
+                                <VBox id="displayOrgDetailsContainer" class="dynamicField"/>
+                                <Label
+                                    id="display_vendorLabel"
+                                    text="Vendor" 
+                                />
+                                <HBox id="displayHbox1">
+                                    <Input
+                                        id="display_vendorText"
+                                        width="200px"
+                                        showValueHelp="true"
+                                        value="{displayOrgDetailsModel>/SoldToParty}"
+                                        editable="false"
+                                    />
+                                    <Input
+                                        id="display_vendorDesc"
+                                        width="200px"
+                                        editable="false"
+                                        value="{displayOrgDetailsModel>/SoldToPartyText}"
+                                        class="sapUiTinyMarginBegin"
+                                    />
+                                </HBox>
+                                <Label
+                                    id="display_companyCodeLabel"
+                                    text="Company Code"
+                                    
+                                />
+                                <HBox id="display_HBox3">
+                                    <Input
+                                        id="display_companyCodeText"
+                                        width="200px"
+                                        editable="false"
+                                        value="{displayOrgDetailsModel>/CompanyCode}"
+                                    />
+                                    <Input
+                                        id="display_companyCodeDesc"
+                                        width="200px"
+                                        editable="false"
+                                        class="sapUiTinyMarginBegin"
+                                        value="{displayOrgDetailsModel>/CompanyCodeText}"
+                                    />
+                                </HBox>
+                                <Label
+                                    id="display_purchaseOrgLabel"
+                                    text="Purchase Organisation"
+                                    
+                                />
+                                <HBox id="display_HBox5">
+                                    <Input
+                                        id="display_purchaseOrgText"
+                                        width="200px"
+                                        editable="false"
+                                        value="{displayOrgDetailsModel>/PurchOrg}"
+                                    />
+                                    <Input
+                                        id="display_purchaseOrgDesc"
+                                        width="200px"
+                                        editable="false"
+                                        class="sapUiTinyMarginBegin"
+                                        value="{displayOrgDetailsModel>/PurchOrgText}"
+                                    />
+                                </HBox>
+                                <core:Title id="display_Title3" />
+                                <VBox id="displayOrgDetailsContainer2" class="dynamicFieldRight"/>
+                                <Label
+                                    id="display_purchaseGroupLabel"
+                                    text="Purchase Group"
+                                />
+                                <HBox id="display_HBox4">
+                                    <Input
+                                      id="display_purchaseGroupText"
+                                      width="200px"
+                                      showValueHelp="true"
+                                      editable="false"
+                                      value="{displayOrgDetailsModel>/PurchGrp}"
+                                    />
+                                    <Input
+                                        id="display_purchaseGroupDesc"
+                                        width="200px"
+                                        editable="false"
+                                        class="sapUiTinyMarginBegin"
+                                        value="{displayOrgDetailsModel>/PurchGrpText}"
+                                    />
+                                </HBox>
+                                <Label
+                                    id="display_validFromLabel"
+                                    text="Start Date"
+                                />
+                                <Input
+                                    id="display_validFromDesc"
+                                    change="onSelectDate"
+                                    width="200px"
+                                    editable="false"
+                                    value="{path: 'displayOrgDetailsModel>/ValidFrom', formatter: '.formatDate'}"
+                                />
+                                <Label
+                                    id="display_validToLabel"
+                                    text="End Date"
+                                />
+                                <Input
+                                    id="display_validToDesc"
+                                    change="onSelectDate"
+                                    width="200px"
+                                    value="{path: 'displayOrgDetailsModel>/ValidTo', formatter: '.formatDate'}"
+                                    editable="false"
+                                />
+                            </form:content>
+                        </form:SimpleForm>
+                    </IconTabFilter>
+                    <IconTabFilter
+                        id="display_capacityDetailsTabFilter"
+                        key="itemDetails"
+                        text="Capacity Details"
+                        icon="sap-icon://activity-items"
+                    >
+                        <form:SimpleForm
+                            id="display_capacityDetailsForm"
+                            class="formArea sapUiTinyMargin"
+                            editable="true"
+                        >
+                            <form:toolbar>
+                                <Toolbar id="display_TB4">
+                                    <Title
+                                        id="display_capacityDetailsText"
+                                        text="Capacity Details"
+                                    />                                  
+                                </Toolbar>
+                            </form:toolbar>
+                            <form:content>
+                                <core:Title id="display_Title5" />
+                                <HBox id="displayCapacityReleaseContainer" class="dynamicField"/>
+                                <Label
+                                    id="display_capacityMaterialText"
+                                    text="Material"
+                                    
+                                    
+                                />
+                                <HBox id="display_materialBox">
+                                    <Input
+                                        id="display_materialText"
+                                        width="200px"
+                                        showValueHelp="true"
+                                        editable="false"
+                                        value="{displayCapacityDetailsModel>/Material}"
+                                    />
+                                    <Input
+                                        id="display_materialDesc"
+                                        width="200px"
+                                        editable="false"
+                                        class="sapUiTinyMarginBegin"
+                                        value="{displayCapacityDetailsModel>/MaterialText}"
+                                        visible="{=${displayCapacityDetailsModel>/MaterialText}? true : false}"
+                                    />
+                                </HBox>
+
+                                 <Label
+                                    id="display_dcqLabel"
+                                    text="DCQ"
+                                />
+                                <Input
+                                    id="display_dcqText"
+                                    width="200px"
+                                    
+                                    liveChange="deriveNetDCQ"
+                                    editable="false"
+                                    value="{displayCapacityDetailsModel>/DeliveryDcq}"
+                                />
+
+                                <Label
+                                    id="display_targetQtyLabel"
+                                    text="Target Quantity" 
+                                    
+                                />
+                                <Input
+                                    id="display_targetQuantityText"
+                                    width="200px"
+                                    editable="false"
+                                    change="targetQuantityCal"
+                                    value="{displayCapacityDetailsModel>/DPTargetQty}"
+                                />
+
+                               
+                                <Label
+                                    id="display_uomLabel"
+                                    text="UOM"
+                                />
+                                <Input
+                                    id="display_uomText"
+                                    width="200px"
+                                    showValueHelp="true"
+                                   editable="false"
+                                   value="{displayCapacityDetailsModel>/Uom}"
+                                />
+                                <core:Title id="display_Title6" />
+                                <HBox id="displayCapacityReleaseContainer2" class="dynamicField"/>
+                                <Label
+                                    id="display_plantLabel"
+                                    text="Plant"
+                                    
+                                />
+                                <HBox id="display_HBox2">
+                                    <Input
+                                        id="display_plantText"
+                                        width="200px"
+                                        editable="false"  
+                                        value="{displayCapacityDetailsModel>/Plant}"                                     
+                                    />
+                                    <Input
+                                        id="display_plantDesc"
+                                        width="200px"
+                                        editable="false"
+                                        class="sapUiTinyMarginBegin"
+                                        value="{displayCapacityDetailsModel>/PlantText}"
+                                        visible="{=${displayCapacityDetailsModel>/PlantText}? true : false}"
+                                    />
+                                </HBox>
+                                <Label
+                                    id="display_storageLocationLabel"
+                                    text="Storage Location"
+                                />
+                                <HBox id="display_HBox">
+                                    <Input
+                                        id="display_storageLocationText"
+                                        width="200px"
+                                       editable="false"
+                                       value="{displayCapacityDetailsModel>/storagelocation}"
+                                    />
+                                    <Input
+                                        id="display_storageLocationDesc"
+                                        width="200px"
+                                        editable="false"
+                                        class="sapUiTinyMarginBegin"
+                                        value="{displayCapacityDetailsModel>/StorageLocationName}"
+                                        visible="{=${displayCapacityDetailsModel>/StorageLocationName}? true : false}"
+                                    />
+                                </HBox>
+                                <Label
+                                    id="display_serviceProfileLabel"
+                                    text="Service Profile"
+                                    class="sapUiTinyMarginBegin"
+                                    
+                                    
+                                />
+                            <HBox id="display_serviceHBox" class="sapUiSmallMarginEnd">
+                                <Input id="serviceId" width="200px" value="{displayCapacityDetailsModel>/Profile}" editable="false"/>
+                            </HBox>
+                                
+                               <Label
+                                    id="display_DeliveryLabel"
+                                    wrapping="true"
+                                    text="Delivery Point"
+                                    
+                                />
+                                <HBox id="display_DeliveryHBox">
+                                    <Input
+                                        id="display_DeliveryText"
+                                        width="200px"
+                                        editable="false"
+                                        value="{displayCapacityDetailsModel>/DeliveryPoint}"
+                                    />
+                                    <Input
+                                        id="display_DeliveryDesc"
+                                        width="200px"
+                                        editable="false"
+                                        class="sapUiTinyMarginBegin"
+                                        value="{displayCapacityDetailsModel>/DeliveryText}"
+                                        visible="{=${displayCapacityDetailsModel>/DeliveryText}? true : false}"
+                                    />
+                                </HBox>
+                              </form:content>
+                        </form:SimpleForm>
+                    </IconTabFilter>
+                    <IconTabFilter
+                        id="display_IconTabFilter3"
+                        text="Service Catalogue"
+                        icon="sap-icon://crm-service-manager"
+                        key="servDetails"
+                        class="iconText"
+                    >
+                         <Table
+                            items="{path: 'valueParameterModel>/'}"
+                            mode="None"
+                            id="display_valueParamTable"
+                            class="formArea tableBorder sapUiTinyMargin"
+                        >
+                            <columns>
+                                <Column
+                                    id="display_valueParamCol"
+                                    width="10rem"
+                                >
+                                    <header>
+                                        <Label
+                                            id="display_valueParamLabel"
+                                            text="Value Parameter"
+                                        />
+                                    </header>
+                                </Column>
+                                <Column
+                                    id="display_valueCol"
+                                    width="10rem"
+                                >
+                                    <header>
+                                        <Label
+                                            id="display_valueLabel"
+                                            text="Value"
+                                        />
+                                    </header>
+                                </Column>
+                            </columns>
+                            <items>
+                                <ColumnListItem id="display_valueParamTableColList">
+                                    <cells>
+                                        <Text
+                                            id="display_valueParamText"
+                                            text="{valueParameterModel>ServiceParam}"
+                                        />
+                                        <Text
+                                            id="display_valueText"
+                                            width="100px"
+                                            text="{valueParameterModel>ParamValue}"
+                                        />
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+
+                        <VBox id="display_vBox">
+                            <Table
+                                items="{path: 'clauseParamModel>/'}"
+                                id="display_clCodeTable"
+                                class="formArea sapUiTinyMargin"
+                            >
+                                <columns>
+                                    <Column
+                                        id="display_clasuseCodeCol"
+                                        width="10rem"
+                                    >
+                                        <Text
+                                            id="display_clasuseCodeLabel"
+                                            text="Clause Code"
+                                        />
+                                    </Column>
+                                    <Column
+                                        id="display_validFromCol"
+                                        width="10rem"
+                                        hAlign="Center"
+                                    >
+                                        <Text
+                                            id="display_clvalidFromLabel"
+                                            text="Valid From"
+                                        />
+                                    </Column>
+                                    <Column
+                                        id="display_validToCol"
+                                        width="10rem"
+                                        hAlign="Center"
+                                    >
+                                        <Text
+                                            id="display_clvalidToLabel"
+                                            text="Valid To"
+                                        />
+                                    </Column>
+                                    <Column
+                                        id="display_thresholdCol"
+                                        width="10rem"
+                                        hAlign="Center"
+                                    >
+                                        <Text
+                                            id="display_thresholdText"
+                                            text="Threshold%"
+                                        />
+                                    </Column>
+                                    <Column
+                                        id="display_thresholdRefCol"
+                                        width="10rem"
+                                        hAlign="Center"
+                                    >
+                                        <Text
+                                            id="display_thresholdRefLabel"
+                                            text="Threshold Reference"
+                                        />
+                                    </Column>
+                                    <Column
+                                        id="display_calculatedValue"
+                                        width="10rem"
+                                        hAlign="Center"
+                                    >
+                                        <Text
+                                            id="display_calculatedText"
+                                            text="Calculated Value"
+                                        />
+                                    </Column>
+                                    <Column
+                                        id="display_remarkCol"
+                                        width="10rem"
+                                        hAlign="Center"
+                                    >
+                                        <Text
+                                            id="display_remarkText"
+                                            text="Remark"
+                                        />
+                                    </Column>
+                                </columns>
+                                <items>
+                                    <ColumnListItem id="display_clTableColList">
+                                        <cells>
+                                            <Text
+                                                id="display_clauseCodeValue"
+                                                width="100px"
+                                                text="{clauseParamModel>ClauseCode}"
+                                            />
+                                            <Text
+                                                id="display_validFromValue"
+                                                width="150px"
+                                                text="{path: 'clauseParamModel>ValidFrom', formatter: '.formatDate'}"
+                                            />
+                                            <Text
+                                                id="display_validToValue"
+                                                width="150px"
+                                                text="{path: 'clauseParamModel>ValidTo', formatter: '.formatDate'}"
+                                            />
+                                            <Text
+                                                id="display_thresholdValue"
+                                                width="150px"
+                                                text="{clauseParamModel>ThresholdP}"
+                                            />
+                                            <Text
+                                                id="display_thresholdRefValue"
+                                                width="130px"
+                                                text="{clauseParamModel>ThreshRef}"
+                                            />
+                                            <Text
+                                                id="display_calculatedValueText"
+                                                width="130px"
+                                                text="{clauseParamModel>CalculatedValue}"
+                                            />
+                                            <Text
+                                                id="display_remarkValue"
+                                                width="100px"
+                                                text="{clauseParamModel>Remark}"
+                                            />
+                                        </cells>
+                                    </ColumnListItem>
+                                </items>
+                            </Table>
+                            <Table
+                                id="display_allocTable"
+                                items="{
+                                path: 'allocModel>/',
+                                sorter: { path: 'ParamValue', descending: false }
+                                }"
+                                class="formArea tableBorder sapUiTinyMargin"
+                            >
+                                <headerToolbar>
+                                    <Toolbar id="display_allocTableTb">
+                                        <Title
+                                            id="display_allocPraamTitle"
+                                            text="Allocation Parameters"
+                                        />
+                                    </Toolbar>
+                                </headerToolbar>
+                                <columns>
+                                    <Column
+                                        id="display_levelCol"
+                                        width="10rem"
+                                    >
+                                        <Text
+                                            id="display_levelLabel"
+                                            text="Level"
+                                        />
+                                    </Column>
+                                    <Column
+                                        id="display_parametersCol"
+                                        width="10rem"
+                                    >
+                                        <Text
+                                            id="display_parametersLabel"
+                                            text="Parameters"
+                                        />
+                                    </Column>
+                                </columns>
+                                <items>
+                                    <ColumnListItem id="_IDGenColumnListItem4">
+                                        <cells>
+                                            <Text
+                                                id="display_levelText"
+                                                text="{allocModel>ParamValue}"
+                                            />
+                                            <Text
+                                                id="display_parametersText"
+                                                text="{allocModel>ServiceParam}"
+                                            />
+                                        </cells>
+                                    </ColumnListItem>
+                                </items>
+                            </Table>
+                        </VBox>
+                    </IconTabFilter>
+                </items>
+            </IconTabBar>
+    
+                    </l:BlockLayoutCell>
+             </l:BlockLayoutRow>
+
+              
+           </l:BlockLayout>
+        </l:VerticalLayout>
+     </ScrollContainer>
+     </Page>
+</mvc:View>

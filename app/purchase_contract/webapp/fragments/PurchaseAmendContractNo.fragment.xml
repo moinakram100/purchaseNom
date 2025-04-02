@@ -1,0 +1,17 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+    <SelectDialog
+        id="purchaseFragment"
+        noDataText="No Purchase Contract Found"
+        title="Select Contract"
+        liveChange="onValueHelpSearch"
+        confirm="onConfirmAmendContractNo"
+        items="{purchaseContractModel>/}"
+        >
+        <StandardListItem id="GenStandardListItem3"
+            title="{purchaseContractModel>}"
+            description=""
+            iconDensityAware="false"
+            iconInset="false"
+            type="Active" />
+    </SelectDialog>
+</core:FragmentDefinition>
